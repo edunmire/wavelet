@@ -21,6 +21,13 @@ class Handler implements URLHandler {
                     return String.format("Number increased by %s! It's now %d", parameters[1], num);
                 }
             }
+            else if (url.getPath().contains("/remove")) {
+                String[] parameters = url.getQuery().split("=");
+                if(parameters[0].equals("count")) {
+                    num -= Integer.parseInt(parameters[1]);
+                    return String.format("Number decreased by %s! It's now %d", parameters[1], num);
+                }
+            }
             return "404 Not Found!";
         }
     }
